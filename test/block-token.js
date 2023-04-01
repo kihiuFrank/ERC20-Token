@@ -17,4 +17,14 @@ const { developmentChains } = require("../helper-hardhat-config")
           it("deploys succefully", async () => {
               assert(blockToken.address)
           })
+
+          describe("constructor", () => {
+              it("intializes name & symbol correctly", async () => {
+                  const tokenName = (await blockToken.name()).toString()
+                  const tokenSymbol = (await blockToken.symbol()).toString()
+
+                  assert.equal(tokenName, "Block")
+                  assert.equal(tokenSymbol, "BLK")
+              })
+          })
       })
